@@ -1,7 +1,7 @@
 require 'sinatra'
 require 'data_mapper'
 
-DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/todo_list.db")
+=beginDataMapper::setup(:default, "sqlite3://#{Dir.pwd}/todo_list.db")
   class Item
   include DataMapper::Resource
   property :id, Serial
@@ -10,6 +10,7 @@ DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/todo_list.db")
   property :created, DateTime
   end
 DataMapper.finalize.auto_upgrade!
+=end
 
 get '/' do
   @items = Item.all(:order => :created.desc)
