@@ -2,7 +2,7 @@ require 'sinatra'
 require 'data_mapper'
 require 'pony'
 
-DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/todo_list.db")
+DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/todo_list.db")
   class Item
   include DataMapper::Resource
   property :id, Serial
